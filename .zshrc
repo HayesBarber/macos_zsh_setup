@@ -5,6 +5,10 @@ typeset -U path
 
 export GIT_ROOT_BRANCH="main"
 
+alias cl="clear"
+alias gcm="git checkout "$GIT_ROOT_BRANCH""
+alias gl="git pull"
+
 current_branch() {
     git rev-parse --abbrev-ref HEAD 2> /dev/null | sed "s/\(.*\)/[\1] /"
 }
@@ -26,12 +30,9 @@ _git_checkout_local_completer() {
 complete -F _git_checkout_local_completer git checkout
 
 purge_git_branches() {
+    gcm
     git branch | grep -v "$GIT_ROOT_BRANCH" | xargs git branch -D
 }
-
-alias cl="clear"
-alias gcm="git checkout "$GIT_ROOT_BRANCH""
-alias gl="git pull"
 
 # if using zsh-autosuggestions, need to source it
 # install with brew -> brew install zsh-autosuggestions
