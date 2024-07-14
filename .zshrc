@@ -11,6 +11,8 @@ alias gl="git pull"
 alias current_branch="git rev-parse --abbrev-ref HEAD"
 alias ip="ipconfig getifaddr en1"
 
+copy() { tee /dev/tty | pbcopy; }
+
 format_current_branch() {
     current_branch 2> /dev/null | sed "s/\(.*\)/[\1] /"
 }
@@ -39,9 +41,9 @@ get_latest() {
     git checkout "$curr"
 }
 
-copy_branch() { current_branch | tee /dev/tty | pbcopy; }
-copy_path() { pwd | tee /dev/tty | pbcopy; }
-copy_ip() { ip | tee /dev/tty | pbcopy; }
+copy_branch() { current_branch | copy; }
+copy_path() { pwd | copy; }
+copy_ip() { ip | copy; }
 
 # allows for tab autocomplete with only local git branches
 _git_checkout_local_completer() {
@@ -58,9 +60,9 @@ purge_git_branches() {
     git branch | grep -v "$GIT_ROOT_BRANCH" | xargs git branch -D
 }
 
-shrug() { echo -n "¯\_(ツ)_/¯\n" | tee /dev/tty | pbcopy; }
-flip() { echo -n "（╯°□°）╯ ┻━┻\n" | tee /dev/tty | pbcopy; }
-disappointed() { echo -n " ಠ_ಠ \n" | tee /dev/tty | pbcopy; }
+shrug() { echo "¯\_(ツ)_/¯" | copy; }
+flip() { echo "（╯°□°）╯ ┻━┻" | copy; }
+disappointed() { echo " ಠ_ಠ " | copy; }
 
 # if using zsh-autosuggestions, need to source it
 # install with brew -> brew install zsh-autosuggestions
