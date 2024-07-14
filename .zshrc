@@ -38,8 +38,12 @@ get_latest() {
     git checkout "$curr"
 }
 
-branch_copy() {
+copy_branch() {
     echo $(current_branch) | pbcopy
+}
+
+copy_path() {
+    echo $(pwd) | pbcopy
 }
 
 # allows for tab autocomplete with only local git branches
