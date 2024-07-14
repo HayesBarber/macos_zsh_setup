@@ -9,6 +9,7 @@ alias cl="clear"
 alias gcm="git checkout "$GIT_ROOT_BRANCH""
 alias gl="git pull"
 alias current_branch="git rev-parse --abbrev-ref HEAD"
+alias ip="ipconfig getifaddr en1"
 
 format_current_branch() {
     current_branch 2> /dev/null | sed "s/\(.*\)/[\1] /"
