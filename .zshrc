@@ -38,6 +38,10 @@ get_latest() {
     git checkout "$curr"
 }
 
+branch_copy() {
+    echo $(current_branch) | pbcopy
+}
+
 # allows for tab autocomplete with only local git branches
 _git_checkout_local_completer() {
     local cur=${COMP_WORDS[COMP_CWORD]}
