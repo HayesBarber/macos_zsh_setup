@@ -39,13 +39,9 @@ get_latest() {
     git checkout "$curr"
 }
 
-copy_branch() {
-    echo $(current_branch) | pbcopy
-}
-
-copy_path() {
-    echo $(pwd) | pbcopy
-}
+copy_branch() { current_branch | tee /dev/tty | pbcopy; }
+copy_path() { pwd | tee /dev/tty | pbcopy; }
+copy_ip() { ip | tee /dev/tty | pbcopy; }
 
 # allows for tab autocomplete with only local git branches
 _git_checkout_local_completer() {
