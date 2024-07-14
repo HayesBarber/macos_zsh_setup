@@ -31,6 +31,13 @@ acm() {
     git push
 }
 
+get_latest() {
+    local curr=$(current_branch)
+    gcm
+    gl
+    git checkout "$curr"
+}
+
 # allows for tab autocomplete with only local git branches
 _git_checkout_local_completer() {
     local cur=${COMP_WORDS[COMP_CWORD]}
