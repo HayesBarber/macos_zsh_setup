@@ -8,16 +8,28 @@ export GIT_ROOT_BRANCH="main"
 alias cl="clear"
 alias gcm="git checkout "$GIT_ROOT_BRANCH""
 alias gl="git pull"
+alias current_branch="git rev-parse --abbrev-ref HEAD"
 
-current_branch() {
-    git rev-parse --abbrev-ref HEAD 2> /dev/null | sed "s/\(.*\)/[\1] /"
+format_current_branch() {
+    current_branch 2> /dev/null | sed "s/\(.*\)/[\1] /"
 }
 
 set_prompt() {
-    PROMPT="%B%F{green}%1d $(current_branch)➤➤➤ %b%f"
+    PROMPT="%B%F{green}%1d $(format_current_branch)➤➤➤ %b%f"
 }
 
 precmd_functions+=(set_prompt)
+
+# auto commit
+acm() {
+    git add .
+    local message="$*"
+    if [[ -z "$message" ]]; then
+        message="auto commit"
+    fi
+    git commit -m "$message"
+    git push
+}
 
 # allows for tab autocomplete with only local git branches
 _git_checkout_local_completer() {
