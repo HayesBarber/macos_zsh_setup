@@ -61,6 +61,10 @@ purge_git_branches() {
     git branch | grep -v "$GIT_ROOT_BRANCH" | xargs git branch -D
 }
 
+shrug() { echo -n "¯\_(ツ)_/¯\n" | tee /dev/tty | pbcopy; }
+flip() { echo -n "（╯°□°）╯ ┻━┻\n" | tee /dev/tty | pbcopy; }
+disappointed() { echo -n " ಠ_ಠ \n" | tee /dev/tty | pbcopy; }
+
 # if using zsh-autosuggestions, need to source it
 # install with brew -> brew install zsh-autosuggestions
 # source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
