@@ -23,12 +23,10 @@ precmd_functions+=(set_prompt)
 # auto commit
 acm() {
     git add .
-
     local message="$*"
     if [[ -z "$message" ]]; then
         message="auto commit"
     fi
-
     git commit -m "$message"
     git push
 }
