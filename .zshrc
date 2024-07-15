@@ -64,6 +64,9 @@ shrug() { echo "¯\_(ツ)_/¯" | copy; }
 flip() { echo "（╯°□°）╯ ┻━┻" | copy; }
 disappointed() { echo " ಠ_ಠ " | copy; }
 
-# if using zsh-autosuggestions, need to source it
-# install with brew -> brew install zsh-autosuggestions
+# if using zsh-autosuggestions or zsh-syntax-highlighting, need to source them
+# install with brew:
+# brew install zsh-autosuggestions
+# brew install zsh-syntax-highlighting
 # source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+# source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
